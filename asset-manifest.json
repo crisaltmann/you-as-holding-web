@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/crisaltmann/you-as-holding-web.git/static/css/main.29d2a803.chunk.css",
-    "main.js": "/crisaltmann/you-as-holding-web.git/static/js/main.f10f930c.chunk.js",
-    "main.js.map": "/crisaltmann/you-as-holding-web.git/static/js/main.f10f930c.chunk.js.map",
-    "runtime-main.js": "/crisaltmann/you-as-holding-web.git/static/js/runtime-main.29f58237.js",
-    "runtime-main.js.map": "/crisaltmann/you-as-holding-web.git/static/js/runtime-main.29f58237.js.map",
-    "static/js/2.590ac380.chunk.js": "/crisaltmann/you-as-holding-web.git/static/js/2.590ac380.chunk.js",
-    "static/js/2.590ac380.chunk.js.map": "/crisaltmann/you-as-holding-web.git/static/js/2.590ac380.chunk.js.map",
-    "static/js/3.3f8973ae.chunk.js": "/crisaltmann/you-as-holding-web.git/static/js/3.3f8973ae.chunk.js",
-    "static/js/3.3f8973ae.chunk.js.map": "/crisaltmann/you-as-holding-web.git/static/js/3.3f8973ae.chunk.js.map",
-    "index.html": "/crisaltmann/you-as-holding-web.git/index.html",
-    "static/css/main.29d2a803.chunk.css.map": "/crisaltmann/you-as-holding-web.git/static/css/main.29d2a803.chunk.css.map",
-    "static/js/2.590ac380.chunk.js.LICENSE.txt": "/crisaltmann/you-as-holding-web.git/static/js/2.590ac380.chunk.js.LICENSE.txt"
+    "main.css": "/you-as-holding-web/static/css/main.29d2a803.chunk.css",
+    "main.js": "/you-as-holding-web/static/js/main.f10f930c.chunk.js",
+    "main.js.map": "/you-as-holding-web/static/js/main.f10f930c.chunk.js.map",
+    "runtime-main.js": "/you-as-holding-web/static/js/runtime-main.71002e75.js",
+    "runtime-main.js.map": "/you-as-holding-web/static/js/runtime-main.71002e75.js.map",
+    "static/js/2.590ac380.chunk.js": "/you-as-holding-web/static/js/2.590ac380.chunk.js",
+    "static/js/2.590ac380.chunk.js.map": "/you-as-holding-web/static/js/2.590ac380.chunk.js.map",
+    "static/js/3.3f8973ae.chunk.js": "/you-as-holding-web/static/js/3.3f8973ae.chunk.js",
+    "static/js/3.3f8973ae.chunk.js.map": "/you-as-holding-web/static/js/3.3f8973ae.chunk.js.map",
+    "index.html": "/you-as-holding-web/index.html",
+    "static/css/main.29d2a803.chunk.css.map": "/you-as-holding-web/static/css/main.29d2a803.chunk.css.map",
+    "static/js/2.590ac380.chunk.js.LICENSE.txt": "/you-as-holding-web/static/js/2.590ac380.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.29f58237.js",
+    "static/js/runtime-main.71002e75.js",
     "static/js/2.590ac380.chunk.js",
     "static/css/main.29d2a803.chunk.css",
     "static/js/main.f10f930c.chunk.js"
