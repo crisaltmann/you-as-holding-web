@@ -149,6 +149,7 @@ const AddAsset: React.FC<Props> = ({ onSave }) => {
         size="medium"
         className={classes.buttonMargin}
         variant="contained"
+        color="primary"
         onClick={save}
       >
         Salvar

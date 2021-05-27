@@ -67,8 +67,8 @@ const Wallet: React.FC = () => {
     setRows(formattedRows);
   }, []);
 
-  const handleSave = (order: OrderData) => {
-    apiSaveOrder(order);
+  const handleSave = async (order: OrderData) => {
+    await apiSaveOrder(order);
     setIsOpen(false);
     fetchPortfolio();
   };
