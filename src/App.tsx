@@ -1,8 +1,9 @@
 import React from "react";
-import Wallet from "./containers/Wallet";
+
+import { Main } from "./containers/Main";
 
 function App() {
-  return <Wallet />;
+  return <Main />;
 }
 
 export default App;
