@@ -1,22 +1,22 @@
 import {
   Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
-  ResponsiveContainer,
-  Tooltip,
   XAxis,
   YAxis,
+  Legend,
+  Tooltip,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
 } from "recharts";
+import { Consolidated } from "../../api/holding";
 
-export const MarginChart = ({ data }: { data: any }) => {
-  console.log(data);
-  const chart = data?.map((d: any) => ({
+export const MarginChart = ({ data }: { data: Consolidated[] }) => {
+  const chart = data?.map((d) => ({
     name: d.ano,
     margin: (d.margem_liquida * 100).toFixed(0),
   }));
 
-  const toPercent = (decimal: any) => `${decimal}%`;
+  const toPercent = (decimal: string) => `${decimal}%`;
 
   return (
     <ResponsiveContainer width='50%' height={250}>

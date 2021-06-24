@@ -1,16 +1,14 @@
 import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
   Line,
-  LineChart,
-  ResponsiveContainer,
-  Tooltip,
   XAxis,
   YAxis,
+  Legend,
+  Tooltip,
+  LineChart,
+  CartesianGrid,
+  ResponsiveContainer,
 } from "recharts";
-import { Consolidated, Holding } from "../../api/holding";
+import { Consolidated } from "../../api/holding";
 
 export const DataChart = ({ data }: { data: Consolidated[] }) => {
   const chart = data?.map((d) => ({

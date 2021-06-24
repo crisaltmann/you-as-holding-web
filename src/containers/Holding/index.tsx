@@ -21,8 +21,8 @@ import {
   holding as apiHolding,
   Holding as HoldingProps,
 } from "../../api/holding";
-import { MarginChart } from "../MarginChart";
-import { DataChart } from "../DataChart";
+import { MarginChart } from "../../components/MarginChart";
+import { DataChart } from "../../components/DataChart";
 import { formatPercentage } from "../../utils/formatPercentage";
 
 const useStyles = makeStyles(() => ({
