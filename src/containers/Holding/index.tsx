@@ -24,6 +24,7 @@ import {
 import { MarginChart } from "../../components/MarginChart";
 import { DataChart } from "../../components/DataChart";
 import { formatPercentage } from "../../utils/formatPercentage";
+import { toast } from "react-toastify";
 
 const useStyles = makeStyles(() => ({
   margin: {
@@ -56,7 +57,7 @@ const StyledTableCell = withStyles(() => ({
 const Row = ({ row, holdings }: { row: any; holdings: any }) => {
   const [open, setOpen] = React.useState(false);
 
-  const lala = holdings.filter(
+  const quarters = holdings.filter(
     (holding: any) => holding.trimestre.ano === row.ano
   );
 
@@ -98,7 +99,7 @@ const Row = ({ row, holdings }: { row: any; holdings: any }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {lala.map((row: any) => (
+                {quarters.map((row: HoldingProps) => (
                   <TableRow key={row.trimestre.codigo}>
                     <>
                       <StyledTableCell>
@@ -127,18 +128,22 @@ const Row = ({ row, holdings }: { row: any; holdings: any }) => {
   );
 };
 
-const Holding: React.FC = () => {
+const Holding = ({ userId }: { userId: number }) => {
   const [rows, setRows] = useState([] as Consolidated[]);
   const [holdings, setHoldings] = useState([] as HoldingProps[]);
 
   const classes = useStyles();
 
   const fetchHoldings = useCallback(async () => {
-    const holding = await apiHolding({ userId: "1" });
+    try {
+      const holding = await apiHolding({ userId });
 
-    setRows(holding.consolidated);
-    setHoldings(holding.holdings);
-  }, []);
+      setRows(holding.consolidated);
+      setHoldings(holding.holdings);
+    } catch (e) {
+      toast.error("Ocorreu um erro ao buscar o resumo de dados.");
+    }
+  }, [userId]);
 
   useEffect(() => {
     fetchHoldings();
@@ -165,7 +170,7 @@ const Holding: React.FC = () => {
           </TableHead>
           <TableBody>
             {rows?.map((row) => (
-              <Row row={row} holdings={holdings} />
+              <Row row={row} key={row.ano} holdings={holdings} />
             ))}
           </TableBody>
         </Table>

@@ -11,6 +11,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 import { Insight, summary as apiInsightsSummary } from "../../api/insights";
 import { formatPercentage } from "../../utils/formatPercentage";
+import { toast } from "react-toastify";
 
 type TabPanelProps = {
   children: ReactNode;
@@ -55,7 +56,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Insights = () => {
+const Insights = ({ userId }: { userId: number }) => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const [insights, setInsights] = useState<Insight[]>([]);
@@ -65,16 +66,20 @@ const Insights = () => {
   };
 
   const fetchInsights = useCallback(async () => {
-    const { insights } = await apiInsightsSummary(1);
-    const filteredInsights = insights.filter(
-      (insight) =>
-        !!insight.ativo_maior_divida.nome ||
-        !!insight.ativo_maior_lucro.nome ||
-        !!insight.ativo_maior_receita.nome ||
-        !!insight.ativo_maior_ebitda.nome
-    );
-    setInsights(filteredInsights);
-  }, []);
+    try {
+      const { insights } = await apiInsightsSummary(userId);
+      const filteredInsights = insights.filter(
+        (insight) =>
+          !!insight.ativo_maior_divida.nome ||
+          !!insight.ativo_maior_lucro.nome ||
+          !!insight.ativo_maior_receita.nome ||
+          !!insight.ativo_maior_ebitda.nome
+      );
+      setInsights(filteredInsights);
+    } catch (e) {
+      toast.error("Ocorreu um erro ao buscar os insights.");
+    }
+  }, [userId]);
 
   useEffect(() => {
     fetchInsights();
@@ -95,7 +100,7 @@ const Insights = () => {
           scrollButtons='auto'
           aria-label='scrollable auto tabs example'
         >
-          {insights.map((insight, index) => (
+          {insights.map((insight) => (
             <Tab
               label={`${insight.trimestre.ano}/${insight.trimestre.trimestre}`}
             />

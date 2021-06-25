@@ -19,6 +19,7 @@ import { Portfolio, all as apiAllPortfolio } from "../../api/portfolio";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { OrderData, save as apiSaveOrder } from "../../api/orders";
 import AddAsset from "../AddAsset";
+import { toast } from "react-toastify";
 
 type Row = {
   logo: string;
@@ -55,22 +56,31 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Wallet: React.FC = () => {
+const Wallet = ({ userId }: { userId: number }) => {
   const [rows, setRows] = useState([] as Row[]);
   const [isOpen, setIsOpen] = useState(false);
 
   const classes = useStyles();
 
   const fetchPortfolio = useCallback(async () => {
-    const portfolio = await apiAllPortfolio(1);
-    const formattedRows = portfolio.map((p) => formatRow(p));
-    setRows(formattedRows);
-  }, []);
+    try {
+      const portfolio = await apiAllPortfolio(userId);
+      const formattedRows = portfolio.map((p) => formatRow(p));
+      setRows(formattedRows);
+    } catch (e) {
+      toast.error("Ocorreu um erro ao buscar o portfolio.");
+    }
+  }, [userId]);
 
   const handleSave = async (order: OrderData) => {
-    await apiSaveOrder(order);
-    setIsOpen(false);
-    fetchPortfolio();
+    try {
+      await apiSaveOrder(order);
+      setIsOpen(false);
+      fetchPortfolio();
+      toast.success("Ativo adicionado com sucesso.");
+    } catch (e) {
+      toast.error("Ocorreu um erro ao salvar o novo ativo.");
+    }
   };
 
   useEffect(() => {
@@ -79,14 +89,14 @@ const Wallet: React.FC = () => {
 
   return (
     <Box m={5}>
-      <Typography className={classes.margin} variant="h5">
+      <Typography className={classes.margin} variant='h5'>
         Sua carteira
       </Typography>
       <TableContainer component={Paper} className={classes.margin}>
-        <Table size="small">
+        <Table size='small'>
           <TableHead>
             <TableRow>
-              <TableCell padding="checkbox">Ativo</TableCell>
+              <TableCell padding='checkbox'>Ativo</TableCell>
               <TableCell></TableCell>
               <TableCell>Quantidade</TableCell>
               <TableCell>Valor</TableCell>
@@ -95,8 +105,8 @@ const Wallet: React.FC = () => {
           <TableBody>
             {rows.map((row) => (
               <TableRow key={row.codigo}>
-                <TableCell component="th" scope="row">
-                  <Avatar variant="square" src={row.logo} alt={row.codigo} />
+                <TableCell component='th' scope='row'>
+                  <Avatar variant='square' src={row.logo} alt={row.codigo} />
                 </TableCell>
                 <TableCell>{row.codigo}</TableCell>
                 <TableCell>{row.quantidade}</TableCell>
@@ -108,9 +118,9 @@ const Wallet: React.FC = () => {
       </TableContainer>
 
       <Button
-        size="medium"
-        variant="contained"
-        color="primary"
+        size='medium'
+        variant='contained'
+        color='primary'
         onClick={() => setIsOpen(!isOpen)}
       >
         Adicionar ativo

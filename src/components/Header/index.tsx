@@ -7,12 +7,11 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     alignItems: "center",
     paddingLeft: "30px",
-    backgroundColor: "#015da4",
+    backgroundColor: "rgba(1, 93, 164, 0.5)",
   },
   title: {
     fontFamily: "Exo",
     color: "#1C1D1E",
-    // textTransform: "uppercase",
   },
 }));
 
@@ -21,7 +20,7 @@ const Header = () => {
   return (
     <div className={classes.header}>
       <Typography className={classes.title} variant='h3'>
-        You As Holding
+        You As A Holding
       </Typography>
     </div>
   );

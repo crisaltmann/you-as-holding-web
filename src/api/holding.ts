@@ -1,7 +1,7 @@
 import { request } from "../utils/request";
 
 type HoldingProps = {
-  userId: string;
+  userId: number;
   expand?: boolean;
 };
 
@@ -60,7 +60,7 @@ type Quarter = {
 
 export const holding = ({ userId, expand }: HoldingProps) => {
   const searchParams = new URLSearchParams();
-  searchParams.append("usuario", userId);
+  searchParams.append("usuario", `${userId}`);
   if (expand) {
     searchParams.append("expandir", `${expand}`);
   }

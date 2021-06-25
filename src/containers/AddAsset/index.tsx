@@ -20,6 +20,7 @@ import { format } from "date-fns";
 
 import { Asset, all as apiAllAssets } from "../../api/assets";
 import { OrderData } from "../../api/orders";
+import { toast } from "react-toastify";
 
 type AssetType = "C" | "V";
 
@@ -51,10 +52,14 @@ const AddAsset: React.FC<Props> = ({ onSave }) => {
   const classes = useStyles();
 
   const fetchAssets = useCallback(async () => {
-    const assets = await apiAllAssets();
-    setAssets(assets);
-    if (assets.length > 0) {
-      setAsset(assets[0].id);
+    try {
+      const assets = await apiAllAssets();
+      setAssets(assets);
+      if (assets.length > 0) {
+        setAsset(assets[0].id);
+      }
+    } catch (e) {
+      toast.error("Ocorreu um erro ao buscar os ativos.");
     }
   }, []);
 
@@ -78,26 +83,26 @@ const AddAsset: React.FC<Props> = ({ onSave }) => {
   }, [fetchAssets]);
 
   return (
-    <Box m={4} display="flex" flexDirection="column">
-      <Typography variant="h6"> Adicione ativo</Typography>
+    <Box m={4} display='flex' flexDirection='column'>
+      <Typography variant='h6'> Adicione ativo</Typography>
       <FormControl className={classes.formControl}>
         <FormLabel>Tipo de ativo</FormLabel>
         <RadioGroup
           row
-          aria-label="tipo de ativo"
-          name="assetType"
+          aria-label='tipo de ativo'
+          name='assetType'
           value={assetType}
           onChange={toggleAssetType}
         >
           <FormControlLabel
-            value="C"
-            control={<Radio color="primary" />}
-            label="Compra"
+            value='C'
+            control={<Radio color='primary' />}
+            label='Compra'
           />
           <FormControlLabel
-            value="V"
-            control={<Radio color="primary" />}
-            label="Venda"
+            value='V'
+            control={<Radio color='primary' />}
+            label='Venda'
           />
         </RadioGroup>
       </FormControl>
@@ -119,9 +124,9 @@ const AddAsset: React.FC<Props> = ({ onSave }) => {
           <FormLabel className={classes.formLabelPadding}>Data</FormLabel>
           <DatePicker
             disableToolbar
-            variant="inline"
+            variant='inline'
             value={date}
-            format="dd/MM/yyyy"
+            format='dd/MM/yyyy'
             onChange={(date) => setDate(date as Date)}
           />
         </FormControl>
@@ -131,7 +136,7 @@ const AddAsset: React.FC<Props> = ({ onSave }) => {
         <FormLabel>Quantidade</FormLabel>
         <Input
           value={quantity}
-          type="number"
+          type='number'
           onChange={(e) => setQuantity(parseInt(e.target.value))}
         />
       </FormControl>
@@ -140,16 +145,16 @@ const AddAsset: React.FC<Props> = ({ onSave }) => {
         <FormLabel>Valor total</FormLabel>
         <Input
           value={totalValue}
-          type="number"
+          type='number'
           onChange={(e) => setTotalValue(parseInt(e.target.value))}
-          startAdornment={<InputAdornment position="start">R$</InputAdornment>}
+          startAdornment={<InputAdornment position='start'>R$</InputAdornment>}
         />
       </FormControl>
       <Button
-        size="medium"
+        size='medium'
         className={classes.buttonMargin}
-        variant="contained"
-        color="primary"
+        variant='contained'
+        color='primary'
         onClick={save}
       >
         Salvar
