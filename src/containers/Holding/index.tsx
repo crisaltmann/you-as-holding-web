@@ -161,6 +161,7 @@ const Holding = ({ userId }: { userId: number }) => {
               <TableCell></TableCell>
               <TableCell>Ano</TableCell>
               <TableCell>Receita líquida</TableCell>
+              <TableCell>EBITDA</TableCell>
               <TableCell>Margem EBITDA</TableCell>
               <TableCell>Lucro líquido</TableCell>
               <TableCell>Margem líquida</TableCell>
