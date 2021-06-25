@@ -90,10 +90,10 @@ const Row = ({ row, holdings }: { row: any; holdings: any }) => {
                   <TableCell>Trimestre</TableCell>
                   <TableCell>Receita líquida</TableCell>
                   <TableCell>EBITDA</TableCell>
+                  <TableCell>Margem EBITDA</TableCell>
                   <TableCell>Lucro líquido</TableCell>
                   <TableCell>Margem líquida</TableCell>
                   <TableCell>Dívida líquida</TableCell>
-                  <TableCell>Margem líquida/EBITDA</TableCell>
                   <TableCell>Dívida líquida/EBITDA</TableCell>
                 </TableRow>
               </TableHead>
@@ -106,14 +106,14 @@ const Row = ({ row, holdings }: { row: any; holdings: any }) => {
                       </StyledTableCell>
                       <StyledTableCell>{row.receita_liquida}</StyledTableCell>
                       <StyledTableCell>{row.ebitda}</StyledTableCell>
+                      <StyledTableCell>
+                        {formatPercentage(row.margem_ebitda)}
+                      </StyledTableCell>
                       <StyledTableCell>{row.lucro_liquido}</StyledTableCell>
                       <StyledTableCell>
                         {formatPercentage(row.margem_liquida)}
                       </StyledTableCell>
                       <StyledTableCell>{row.divida_liquida}</StyledTableCell>
-                      <StyledTableCell>
-                        {formatPercentage(row.margem_ebitda)}
-                      </StyledTableCell>
                       <StyledTableCell>{row.div_ebitda}</StyledTableCell>
                     </>
                   </TableRow>
