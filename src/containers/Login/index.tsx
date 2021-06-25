@@ -81,6 +81,7 @@ const Login = () => {
             <FormLabel>Senha</FormLabel>
             <Input
               value={password}
+              type='password'
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormControl>
