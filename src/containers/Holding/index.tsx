@@ -156,11 +156,10 @@ const Holding: React.FC = () => {
               <TableCell></TableCell>
               <TableCell>Ano</TableCell>
               <TableCell>Receita líquida</TableCell>
-              <TableCell>EBITDA</TableCell>
+              <TableCell>Margem EBITDA</TableCell>
               <TableCell>Lucro líquido</TableCell>
               <TableCell>Margem líquida</TableCell>
               <TableCell>Dívida líquida</TableCell>
-              <TableCell>Margem líquida/EBITDA</TableCell>
               <TableCell>Dívida líquida/EBITDA</TableCell>
             </TableRow>
           </TableHead>
