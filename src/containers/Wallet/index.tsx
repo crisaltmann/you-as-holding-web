@@ -123,7 +123,7 @@ const Wallet = ({ userId }: { userId: number }) => {
         color='primary'
         onClick={() => setIsOpen(!isOpen)}
       >
-        Adicionar ativo
+        Adicionar movimentação
       </Button>
 
       <Modal
