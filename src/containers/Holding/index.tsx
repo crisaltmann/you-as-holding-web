@@ -75,10 +75,10 @@ const Row = ({ row, holdings }: { row: any; holdings: any }) => {
         <TableCell>{row.ano}</TableCell>
         <TableCell>{row.receita_liquida}</TableCell>
         <TableCell>{row.ebitda}</TableCell>
+        <TableCell>{formatPercentage(row.margem_ebitda)}</TableCell>
         <TableCell>{row.lucro_liquido}</TableCell>
         <TableCell>{formatPercentage(row.margem_liquida)}</TableCell>
         <TableCell>{row.divida_liquida}</TableCell>
-        <TableCell>{formatPercentage(row.margem_ebitda)}</TableCell>
         <TableCell>{row.div_ebitda}</TableCell>
       </TableRow>
       <TableRow>
