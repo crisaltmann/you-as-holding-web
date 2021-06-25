@@ -86,7 +86,7 @@ const AddAsset: React.FC<Props> = ({ onSave }) => {
     <Box m={4} display='flex' flexDirection='column'>
       <Typography variant='h6'> Adicione ativo</Typography>
       <FormControl className={classes.formControl}>
-        <FormLabel>Tipo de ativo</FormLabel>
+        <FormLabel>Tipo de movimentação</FormLabel>
         <RadioGroup
           row
           aria-label='tipo de ativo'
