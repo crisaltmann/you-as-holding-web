@@ -24,6 +24,7 @@ import {
 import { MarginChart } from "../../components/MarginChart";
 import { DataChart } from "../../components/DataChart";
 import { formatPercentage } from "../../utils/formatPercentage";
+import { formatCurrency } from "../../utils/formatCurrency";
 import { toast } from "react-toastify";
 
 const useStyles = makeStyles(() => ({
@@ -74,12 +75,12 @@ const Row = ({ row, holdings }: { row: any; holdings: any }) => {
           </IconButton>
         </TableCell>
         <TableCell>{row.ano}</TableCell>
-        <TableCell>{row.receita_liquida}</TableCell>
-        <TableCell>{row.ebitda}</TableCell>
+        <TableCell>{formatCurrency(row.receita_liquida)}</TableCell>
+        <TableCell>{formatCurrency(row.ebitda)}</TableCell>
         <TableCell>{formatPercentage(row.margem_ebitda)}</TableCell>
-        <TableCell>{row.lucro_liquido}</TableCell>
+        <TableCell>{formatCurrency(row.lucro_liquido)}</TableCell>
         <TableCell>{formatPercentage(row.margem_liquida)}</TableCell>
-        <TableCell>{row.divida_liquida}</TableCell>
+        <TableCell>{formatCurrency(row.divida_liquida)}</TableCell>
         <TableCell>{row.div_ebitda}</TableCell>
       </TableRow>
       <TableRow>
@@ -105,16 +106,16 @@ const Row = ({ row, holdings }: { row: any; holdings: any }) => {
                       <StyledTableCell>
                         {row.trimestre.ano}/{row.trimestre.trimestre}
                       </StyledTableCell>
-                      <StyledTableCell>{row.receita_liquida}</StyledTableCell>
-                      <StyledTableCell>{row.ebitda}</StyledTableCell>
+                      <StyledTableCell>{formatCurrency(row.receita_liquida)}</StyledTableCell>
+                      <StyledTableCell>{formatCurrency(row.ebitda)}</StyledTableCell>
                       <StyledTableCell>
                         {formatPercentage(row.margem_ebitda)}
                       </StyledTableCell>
-                      <StyledTableCell>{row.lucro_liquido}</StyledTableCell>
+                      <StyledTableCell>{formatCurrency(row.lucro_liquido)}</StyledTableCell>
                       <StyledTableCell>
                         {formatPercentage(row.margem_liquida)}
                       </StyledTableCell>
-                      <StyledTableCell>{row.divida_liquida}</StyledTableCell>
+                      <StyledTableCell>{formatCurrency(row.divida_liquida)}</StyledTableCell>
                       <StyledTableCell>{row.div_ebitda}</StyledTableCell>
                     </>
                   </TableRow>
@@ -152,7 +153,7 @@ const Holding = ({ userId }: { userId: number }) => {
   return (
     <Box m={5}>
       <Typography className={classes.margin} variant='h5'>
-        Resumo
+        Holding
       </Typography>
       <TableContainer component={Paper} className={classes.margin}>
         <Table size='small'>
