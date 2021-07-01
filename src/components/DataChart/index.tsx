@@ -57,12 +57,6 @@ export const DataChart = ({ data }: { data: Consolidated[] }) => {
           stroke='#FF5733'
         />
         <Line
-          name='Margem líquida/EBITDA'
-          type='monotone'
-          dataKey='margem_ebitda'
-          stroke='#27741B'
-        />
-        <Line
           name='Receita líquida'
           type='monotone'
           dataKey='receita_liquida'
